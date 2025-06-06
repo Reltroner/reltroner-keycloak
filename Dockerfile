@@ -10,4 +10,4 @@ RUN /opt/keycloak/bin/kc.sh build
 # Tambahkan ini
 COPY themes/reltroner-theme /opt/keycloak/themes/reltroner-theme
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--hostname=sso.reltroner.com", "--hostname-strict=false", "--hostname-strict-https=false", "--proxy=edge", "--http-enabled=true", "--http-port=8080", "--log-level=INFO"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--hostname=sso.reltroner.com", "--hostname-strict=false", "--hostname-strict-https=false", "--proxy=edge", "--http-enabled=true", "--http-port=8080", "--log-level=INFO", "--spi-theme-default=reltroner-theme"]
