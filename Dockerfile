@@ -1,13 +1,14 @@
 FROM quay.io/keycloak/keycloak:24.0.1
 
-ENV KEYCLOAK_ADMIN=admin
-ENV KEYCLOAK_ADMIN_PASSWORD=reltroner123
+# Switch ke user root untuk copy theme
+USER root
+
+# Copy custom theme
+COPY themes/reltroner-theme /opt/keycloak/themes/reltroner-theme
+
+# Kembalikan ke user keycloak (best practice)
+USER keycloak
 
 EXPOSE 8080
 
-RUN /opt/keycloak/bin/kc.sh build
-
-# Tambahkan ini
-COPY themes/reltroner-theme /opt/keycloak/themes/reltroner-theme
-
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--hostname=sso.reltroner.com", "--hostname-strict=false", "--hostname-strict-https=false", "--proxy=edge", "--http-enabled=true", "--http-port=8080", "--log-level=INFO", "--spi-theme-default=reltroner-theme"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
