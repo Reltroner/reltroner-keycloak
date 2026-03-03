@@ -1,0 +1,35 @@
+RELTRONER KEYCLOAK ADMIN CREDENTIALS (DEV)
+
+## Docker Container Info
+
+Container Name : nice_chaplygin
+Image          : reltroner-keycloak
+Port           : 8080 → http://localhost:8080
+
+## Admin Login (Realm: master)
+
+Username : admin
+Password : reltroner123
+
+## Verification Command
+
+docker inspect nice_chaplygin | findstr KEYCLOAK_ADMIN
+
+## IMPORTANT
+
+* Realm Admin URL:
+  http://localhost:8080
+
+* Admin Console Client:
+  security-admin-console
+
+* Do NOT delete container volume unless intentionally resetting all realms.
+
+## Purpose
+
+Used for managing:
+
+* Realm: reltroner
+* Client: reltroner-app
+* Redirect URIs
+* Post Logout Redirect URIs
